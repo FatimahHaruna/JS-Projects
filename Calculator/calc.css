@@ -1,0 +1,48 @@
+*{ box-sizing: border-box; }
+
+body{
+    margin:0;
+    background-image: url('/images/calc.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.frame{
+    display: inline-block;
+    background: rgba(255,255,255,0.92);
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);  
+}
+.input{
+    min-height: 44px;
+    padding: 8px 10px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    border: 1px solid #d0d0d0;
+    text-align: right;
+    font-size: 1.1rem;
+}
+.button-div .row{
+    display: flex;
+}
+.buttons{
+    flex: 1 1 auto;
+    padding: 12px 14px;
+    margin: 4px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #cfcfcf;
+    background: #f7f7f7;
+    cursor: pointer;
+}
+.buttons:active{ transform: translateY(1px); }
+
+/* If you want the frame to be narrower on small screens */
+@media (max-width: 420px){
+    .buttons{ padding: 10px 8px; font-size: 0.95rem; }
+}
