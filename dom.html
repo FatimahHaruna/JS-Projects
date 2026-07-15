@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM manipulations</title>
+</head>
+<body>
+    <h3>Subscribe button</h3>
+    <button onclick="Subscribe()">Subscribe</button>
+    <h3>Amazon shipping calculator</h3>
+    <p>Orders under $40 = +$10 shipping</p>
+    <p>Orders over $40 = FREE</p>
+    <input type="String" id="amount" onkeydown="console.log(event.key);
+    if(event.key === 'Enter') {
+    Calculate();
+    }">
+    <button onclick="Calculate()">Submit</button>
+    <p id="shipping"></p>
+
+</body>
+<script>
+    function Subscribe() {
+        let subscription = document.querySelector('button').innerHTML;
+        if(subscription === 'Subscribe') {
+            document.querySelector('button').innerHTML = 'Subscribed!'
+        }
+        else if(subscription === 'Subscribed!') {
+            document.querySelector('button').innerHTML = 'Subscribe'
+        }
+    }
+
+    function Calculate() {
+        let price = Number(document.getElementById('amount').value)
+        if(price >= 40) {
+            document.getElementById('shipping').innerHTML = 'Free!';
+        }
+        else if(price < 40) {
+            document.getElementById('shipping').innerHTML = `Your total amount is $${price}.`;
+        }
+    }
+    
+</script>
+</html>
