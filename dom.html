@@ -5,9 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOM manipulations</title>
 </head>
+<style>
+    .Subscribe-button {
+        border:none;
+        font-weight: bold;
+        padding-right: 15px;
+        padding-left: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: black;
+        color:white;
+        border-radius: 15px;
+        cursor:pointer;
+    }
+    .Submit-button {
+        border: none;
+        background-color: green;
+        color:white;
+        font-weight: bold;
+        padding-right: 15px;
+        padding-left: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 15px;
+        cursor:pointer;
+
+    }
+</style>
 <body>
     <h3>Subscribe button</h3>
-    <button onclick="Subscribe()">Subscribe</button>
+    <button onclick="Subscribe()" class="Subscribe-button">Subscribe</button>
     <h3>Amazon shipping calculator</h3>
     <p>Orders under $40 = +$10 shipping</p>
     <p>Orders over $40 = FREE</p>
@@ -15,7 +42,7 @@
     if(event.key === 'Enter') {
     Calculate();
     }">
-    <button onclick="Calculate()">Submit</button>
+    <button onclick="Calculate()" class="Submit-button">Submit</button>
     <p id="shipping"></p>
 
 </body>
@@ -23,7 +50,7 @@
     function Subscribe() {
         let subscription = document.querySelector('button').innerHTML;
         if(subscription === 'Subscribe') {
-            document.querySelector('button').innerHTML = 'Subscribed!'
+            document.querySelector('button').innerHTML = 'Subscribed!';
         }
         else if(subscription === 'Subscribed!') {
             document.querySelector('button').innerHTML = 'Subscribe'
