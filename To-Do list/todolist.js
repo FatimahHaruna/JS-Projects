@@ -1,19 +1,26 @@
-const Todolist = [];
+const Todolist = ['make dinner', 'wash dishes'];
 
 function addtask() {
     const Inputelement = document.querySelector('.Task');
-    const Task = Inputelement.value;
-    Todolist.push(Task);
-    console.log(Todolist);
+    const Task = Inputelement.value.trim();
 
-    Inputelement.value = ' ';
+    if (Task) {
+        Todolist.push(Task);
+        Inputelement.value = '';
+        rendertodo();
+    }
 }
 
-const nums = [1,2,3,4,5];
-let total = 0;
+function rendertodo() {
+    let todolisthtml = '';
 
-for(let i = 0; i < nums.length; i++) {
-    const num = nums[i];
-    total = total + num;
+    for (let i = 0; i < Todolist.length; i++) {
+        const todo = Todolist[i];
+        todolisthtml += `<p>${todo}</p>`;
+    }
+
+    document.querySelector('.taskinput').innerHTML = todolisthtml;
 }
-console.log(total);
+
+rendertodo();
+
