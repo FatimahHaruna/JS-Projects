@@ -1,6 +1,7 @@
 let wins = 0;
 let losses = 0;
 let draws = 0;
+
 function myFunction(playerMove) {
     let randomNum = Math.random();
     let computerMove = ' ';
@@ -38,4 +39,26 @@ function resetScore() {
     draws = 0;
     document.getElementById('status').innerHTML = 'Score reset.';
     document.getElementById('scoreboard').innerHTML = `Wins: ${wins}, Draws: ${draws}, Losses: ${losses}`;
+}
+
+let autoplayActive = false;
+let intervalId = null;
+
+function autoplay() {
+    if (autoplayActive) {
+        clearInterval(intervalId);
+        intervalId = null;
+        autoplayActive = false;
+        return;
+    }
+
+    const moves = ['Rock', 'Paper', 'Scissors'];
+
+    intervalId = setInterval(function () {
+        const randomIndex = Math.floor(Math.random() * moves.length);
+        const playerMove = moves[randomIndex];
+        myFunction(playerMove);
+    }, 3000);
+
+    autoplayActive = true;
 }
