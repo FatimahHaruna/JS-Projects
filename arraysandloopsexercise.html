@@ -150,6 +150,72 @@
             return result;
         }
         console.log(countWords(['apple', 'grape', 'apple', 'apple']));
+//11o
+        let words = ['hello', 'world', 'search', 'good'];
+        let index = -1;
+        for(let i=0; i<words.length; i++) {
+                if(words[i] === 'search') {
+                    index = i;
+                };
+            }
+            console.log(index)
+//11p
+        let array = ['hello', 'world', 'search', 'good', 'search'];
+        let arrayindex = -1;
+        for(let i=0; i<array.length; i++) {
+            if(array[i] === 'search') {
+                arrayindex = i;
+                break;
+            }
+        }
+        console.log(arrayindex);
+//11q
+        function findIndex(array, word) {
+            let wordindex = -1;
+            for(let i=0; i<array.length; i++) {
+                if(array[i] === word) {
+                    wordindex = i;
+                    break;
+                }
+            }
+            return wordindex;
+        }
+        console.log(findIndex(['green', 'red', 'blue', 'red'],'red'));
+        console.log(findIndex(['green', 'red', 'blue', 'red'], 'yellow'));
+//11r
+        function removeEgg(foods) {
+            const foodcopy = foods.slice();
+            const reversedfoods = foodcopy.reverse();
+            const result = [];
+            let eggsRemoved = 0;
+            for(let i=0; i<reversedfoods.length; i++) {
+                if(reversedfoods[i] === 'egg' && eggsRemoved < 2 ) {
+                    eggsRemoved++;
+                    continue;
+                }
+                result.push(reversedfoods[i]);
+            }
+            return result.reverse();
+        }
+        console.log(removeEgg(['egg', 'apple','egg', 'egg', 'ham']));
+//11s - update 11r to remove only the first 2 eggs from array.
+//11t - reverse the result of 11s
+//FizzBuzz problem
+        for(let i=1; i <=20; i++) {
+            if(i % 3 === 0 && i % 5 === 0) {
+                console.log('FizzBuzz');
+            }
+            else if(i % 3 === 0) {
+                console.log('Fizz');
+            }
+            else if(i % 5 === 0 ) {
+                console.log('Buzz');
+            }
+            else{
+                console.log(i);
+            }
+        }
+
     </script>
 </body>
 </html>

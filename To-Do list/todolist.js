@@ -17,6 +17,7 @@ function addtask() {
         Inputelement.value = '';
         rendertodo();
     }
+    const dueDate = document.querySelector('.duedate').value;
 }
 
 function rendertodo() {
