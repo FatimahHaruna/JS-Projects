@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 24px;
+    box-sizing: border-box;
+    background: #f4f7fb;
+    color: #172033;
+    font-family: Arial, sans-serif;
+}
+
+.todo-app {
+    width: min(100%, 620px);
+    margin: 40px auto;
+    padding: 28px;
+    box-sizing: border-box;
+    background: white;
+    border: 1px solid #dce3ef;
+    border-radius: 8px;
+    box-shadow: 0 12px 30px rgb(23 32 51 / 10%);
+}
+
+h1 {
+    margin-top: 0;
+}
+
+.task-form {
+    display: grid;
+    grid-template-columns: 1fr 170px auto;
+    gap: 10px;
+    align-items: end;
+}
+
+.task-form label {
+    grid-row: 1;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.task-form label:nth-of-type(2) {
+    grid-column: 2;
+}
+
+.task-form input {
+    min-width: 0;
+    padding: 10px;
+    border: 1px solid #b9c5d8;
+    border-radius: 4px;
+    font: inherit;
+}
+
+.task-form input:first-of-type {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.task-form input[type="date"] {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.task-form button,
+.task button {
+    padding: 10px 14px;
+    border: 0;
+    border-radius: 4px;
+    background: #2457c5;
+    color: white;
+    cursor: pointer;
+    font: inherit;
+}
+
+.task-form button {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+hr {
+    margin: 24px 0 12px;
+    border: 0;
+    border-top: 1px solid #e2e7ef;
+}
+
+.task {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 14px;
+    align-items: center;
+    margin: 0;
+    padding: 12px 0;
+    border-bottom: 1px solid #e2e7ef;
+}
+
+.due-date,
+.empty-state {
+    color: #5c687c;
+}
+
+.task button {
+    background: #b42318;
+    padding: 7px 10px;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 560px) {
+    .task-form {
+        grid-template-columns: 1fr;
+    }
+
+    .task-form label,
+    .task-form label:nth-of-type(2),
+    .task-form input:first-of-type,
+    .task-form input[type="date"],
+    .task-form button {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .task {
+        grid-template-columns: 1fr auto;
+    }
+
+    .due-date {
+        grid-column: 1;
+    }
+
+    .task button {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+    }
+}

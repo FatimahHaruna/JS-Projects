@@ -1,41 +1,67 @@
 const Todolist = [
     {
         name: 'make dinner',
-        due: '2026-7-22'
+        due: '2026-07-22'
     },
     {
         name: 'wash dishes',
-        due:'2026-7-19'
+        due:'2026-07-19'
     }];
 
 function addtask() {
     const Inputelement = document.querySelector('.Task');
-    const Task = Inputelement.value.trim();
+    const dueDateInput = document.querySelector('.duedate');
+    const taskName = Inputelement.value.trim();
 
-    if (Task) {
-        Todolist.push(Task);
+    if (taskName) {
+        Todolist.push({
+            name: taskName,
+            due: dueDateInput.value
+        });
         Inputelement.value = '';
+        dueDateInput.value = '';
         rendertodo();
     }
-    const dueDate = document.querySelector('.duedate').value;
 }
 
 function rendertodo() {
+    const taskList = document.querySelector('.taskinput');
+
+    if (Todolist.length === 0) {
+        taskList.innerHTML = '<p class="empty-state">No tasks yet.</p>';
+        return;
+    }
+
     let todolisthtml = '';
 
     for (let i = 0; i < Todolist.length; i++) {
         const todo = Todolist[i];
-        //const name = todo.name;
-        //const due = todo.due;
         const {name, due} = todo;
+        const taskName = escapeHtml(name);
+        const dueText = due ? `Due ${escapeHtml(due)}` : 'No due date';
         todolisthtml += 
-            `<p>
-                ${name} ${due} 
-                <button onclick='Todolist.splice(${i},1); rendertodo()'>Delete</button>
+            `<p class="task">
+                <span>${taskName}</span>
+                <span class="due-date">${dueText}</span>
+                <button type="button" onclick="deleteTask(${i})">Delete</button>
             </p>`;
     }
 
-    document.querySelector('.taskinput').innerHTML = todolisthtml;
+    taskList.innerHTML = todolisthtml;
+}
+
+function deleteTask(index) {
+    Todolist.splice(index, 1);
+    rendertodo();
+}
+
+function escapeHtml(value) {
+    return String(value)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
 }
 
 rendertodo();
